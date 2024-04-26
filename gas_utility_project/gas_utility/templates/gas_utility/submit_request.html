@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Submit Service Request</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+{% comment %} <body>
+    <h1>Submit Service Request</h1>
+    <!-- submit_request.html -->
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="request_type" placeholder="Request Type"><br>
+        <textarea name="details" placeholder="Details"></textarea><br>
+        <input type="file" name="attachment"><br>
+        <button type="submit">Submit</button>
+    </form>
+
+</body> {% endcomment %}
+<body>
+    <div class="container">
+        <h1>Submit Service Request</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}    
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+            <a href="{% url 'service_request_list' %}" class="button2">Check Status</a>
+            <a href="{% url 'track_request' %}" class="button2">Requests</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Request Detail</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Service Request Detail</h1>
+        <p>Request Type: {{ service_request.request_type }}</p>
+        <p>Status: {{ service_request.status }}</p>
+
+        <form method="post" class="new-form" action="{% url 'update_service_request_status' service_request.pk %}">
+            {% csrf_token %}
+            <label for="status">Update Status:</label>
+            <select name="status" id="status">
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Resolved">Resolved</option>
+            </select>
+            <button type="submit">Update</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Service Requests</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Track Service Requests</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Request Type</th>
+                    <th>Status</th>
+                    <th>Submission Timestamp</th>
+                    <th>Attachment</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in user_requests %}
+                <tr>
+                    <td>{{ request.request_type }}</td>
+                    <td>{{ request.status }}</td>
+                    <td>{{ request.submission_timestamp }}</td>
+                    <td>{{ request.attachment }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
